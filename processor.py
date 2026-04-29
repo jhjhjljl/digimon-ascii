@@ -7,12 +7,12 @@ import numpy
 import ijson
 
 
-ASCII_RAMP = " ░▒▓█"
+ASCII_RAMP = " .:-=+*#%@"
 ASCII_RAMP_LEN = len(ASCII_RAMP) - 1
 LOOKUP = numpy.array(list(ASCII_RAMP))
-FRAME_WIDTH = 60
-FRAME_HEIGHT = 30
-FPS = 30
+FRAME_WIDTH = 40
+FRAME_HEIGHT = 20
+FPS = 29.97
 
 
 def _frame_to_ascii(
