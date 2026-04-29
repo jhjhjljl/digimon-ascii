@@ -40,7 +40,7 @@ def image_ascii_to_json(
 	output: str,
 	width: int = FRAME_WIDTH,
 	height: int = FRAME_HEIGHT
-):
+) -> None:
 	ascii = image_to_ascii(fpath, width, height)
 	with open(output, "w") as f:
 		json.dump(ascii, f)
