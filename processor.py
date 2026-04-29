@@ -10,8 +10,8 @@ import ijson
 ASCII_RAMP = " .:-=+*#%@"
 ASCII_RAMP_LEN = len(ASCII_RAMP) - 1
 LOOKUP = numpy.array(list(ASCII_RAMP))
-FRAME_WIDTH = 400
-FRAME_HEIGHT = 200
+FRAME_WIDTH = 200
+FRAME_HEIGHT = 100
 FPS = 29.97
 
 
