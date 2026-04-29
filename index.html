@@ -30,14 +30,14 @@
 <body>
   <div id="click-to-play">click to play (wip)</div>
   <pre id="canvas" style="display:none"></pre>
-  <audio id="audio" src="output.mp3"></audio>
+  <audio id="audio" src="/assets/digimon/output.mp3"></audio>
   <script>
     const canvas = document.getElementById("canvas");
     const prompt = document.getElementById("click-to-play");
     const audio = document.getElementById("audio");
 
     async function main() {
-      const r = await fetch("output.json");
+      const r = await fetch("/assets/digimon/output.json");
       const frames = await r.json();
 
       document.addEventListener("click", () => {
