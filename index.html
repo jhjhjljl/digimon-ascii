@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>digimon ascii</title>
+  <style>
+    body {
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    pre {
+      color: white;
+      font-family: monospace;
+      font-size: 4px;
+      line-height: 1.2;
+      white-space: pre;
+    }
+    #click-to-play {
+      color: white;
+      font-family: monospace;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="click-to-play">click to play (wip)</div>
+  <pre id="canvas" style="display:none"></pre>
+  <audio id="audio" src="output.mp3"></audio>
+  <script>
+    const canvas = document.getElementById("canvas");
+    const prompt = document.getElementById("click-to-play");
+    const audio = document.getElementById("audio");
+
+    let paused = false;
+    let timer = null;
+
+    async function main() {
+      const r = await fetch("output.json");
+      const frames = await r.json();
+
+      document.addEventListener("click", () => {
+        prompt.style.display = "none";
+        canvas.style.display = "block";
+        audio.play();
+        startAnimation(frames);
+      }, { once: true });
+    }
+
+    function startAnimation(frames) {
+      paused = false;
+      let i = 0;
+
+      canvas.addEventListener("click", () => {
+        paused = !paused;
+        if (!paused) {
+          audio.play();
+          nextFrame();
+        } else {
+          audio.pause();
+        }
+      });
+
+      function nextFrame() {
+        if (paused) return;
+        if (i >= frames.length) {
+          canvas.style.display = "none";
+          prompt.style.display = "block";
+          document.addEventListener("click", () => {
+            prompt.style.display = "none";
+            canvas.style.display = "block";
+            audio.currentTime = 0;
+            audio.play();
+            startAnimation(frames);
+          }, { once: true });
+          return;
+        }
+        canvas.textContent = frames[i];
+        i++;
+        timer = setTimeout(nextFrame, 1000 / 29.97);
+      }
+
+      nextFrame();
+    }
+
+    main();
+  </script>
+</body>
+</html>
