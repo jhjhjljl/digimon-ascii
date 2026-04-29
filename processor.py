@@ -60,7 +60,7 @@ def video_ascii_to_json(
 def render_json_video(
 	fpath: str,
 	fps: int = FPS
-):
+) -> None:
 	delay = 1 / fps
 	sys.stdout.write("\033[2J")
 	with open(fpath) as f:
@@ -71,4 +71,3 @@ def render_json_video(
 			sys.stdout.flush()
 			elapsed = time.time() - start
 			time.sleep(max(0, delay - elapsed))
-
