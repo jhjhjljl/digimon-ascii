@@ -15,7 +15,7 @@ FRAME_HEIGHT = 100
 FPS = 29.97
 
 
-def _frame_to_ascii(
+def frame_to_ascii(
 	frame: numpy.ndarray,
 	width: int,
 	height: int
@@ -32,7 +32,18 @@ def image_to_ascii(
 	height: int = FRAME_HEIGHT
 ) -> str:
 	frame = cv2.imread(fpath)
-	return _frame_to_ascii(frame, width, height)
+	return frame_to_ascii(frame, width, height)
+
+
+def image_ascii_to_json(
+	fpath: str,
+	output: str,
+	width: int = FRAME_WIDTH,
+	height: int = FRAME_HEIGHT
+):
+	ascii = image_to_ascii(fpath, width, height)
+	with open(output, "w") as f:
+		json.dump(ascii, f)
 
 
 def video_ascii_to_json(
@@ -51,7 +62,7 @@ def video_ascii_to_json(
 				break
 			if not first:
 				f.write(",")
-			json.dump(_frame_to_ascii(frame, width, height), f)
+			json.dump(frame_to_ascii(frame, width, height), f)
 			first = False
 		f.write("]")
 	cap.release()
@@ -59,7 +70,7 @@ def video_ascii_to_json(
 
 def render_json_video(
 	fpath: str,
-	fps: int = FPS
+	fps: float = FPS
 ) -> None:
 	delay = 1 / fps
 	sys.stdout.write("\033[2J")
