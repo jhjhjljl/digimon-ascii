@@ -36,9 +36,6 @@
     const prompt = document.getElementById("click-to-play");
     const audio = document.getElementById("audio");
 
-    let paused = false;
-    let timer = null;
-
     async function main() {
       const r = await fetch("output.json");
       const frames = await r.json();
@@ -52,21 +49,9 @@
     }
 
     function startAnimation(frames) {
-      paused = false;
       let i = 0;
 
-      canvas.addEventListener("click", () => {
-        paused = !paused;
-        if (!paused) {
-          audio.play();
-          nextFrame();
-        } else {
-          audio.pause();
-        }
-      });
-
       function nextFrame() {
-        if (paused) return;
         if (i >= frames.length) {
           canvas.style.display = "none";
           prompt.style.display = "block";
@@ -81,7 +66,7 @@
         }
         canvas.textContent = frames[i];
         i++;
-        timer = setTimeout(nextFrame, 1000 / 29.97);
+        setTimeout(nextFrame, 1000 / 29.97);
       }
 
       nextFrame();
