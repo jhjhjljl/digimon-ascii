@@ -10,9 +10,12 @@ import ijson
 ASCII_RAMP = " .:-=+*#%@"
 ASCII_RAMP_LEN = len(ASCII_RAMP) - 1
 LOOKUP = numpy.array(list(ASCII_RAMP))
+BASE_WIDTH = 960
+BASE_HEIGHT = 720
+FPS = 23.976
+
 FRAME_WIDTH = 200
 FRAME_HEIGHT = 100
-FPS = 29.97
 
 
 def frame_to_ascii(
