@@ -1,3 +1,4 @@
+ep1
 taichi yagami
 yamato ishida
 jou kido
@@ -20,3 +21,11 @@ motimon
 piyomon
 tanemon
 tsunomon
+
+ep2
+shellmon
+greymon
+
+ep3
+monochromon
+seadramon
