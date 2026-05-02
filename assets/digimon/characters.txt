@@ -73,3 +73,14 @@ elecmon
 
 ep13
 angemon
+
+ep14
+gennai
+poyomon
+whamon
+drimogemon
+
+ep15
+pagumon
+gazimon
+etemon

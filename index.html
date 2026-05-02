@@ -5,8 +5,14 @@
   <title>digimon ascii</title>
   <link rel="stylesheet" href="assets/css/base.css">
   <style>
+    :root {
+      --yellow: rgb(252, 250, 15);
+      --orange: rgb(237, 111, 44);
+      --black: rgb(000, 000, 000);
+      --navy: rgb(21, 57, 105);
+    }
     body {
-      background: black;
+      background-color: var(--navy);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -14,14 +20,14 @@
       margin: 0;
     }
     pre {
-      color: white;
-      font-size: 9px;
+      color: var(--yellow);
+      font-size: 7px;
       line-height: 0.465;
       white-space: pre;
       font-family: "SF Mono";
     }
     #click-to-play {
-      color: white;
+      color: var(--yellow);
       font-size: 24px;
       cursor: pointer;
     }
